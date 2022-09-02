@@ -2,6 +2,7 @@ import express from 'express'
 import homeController from '../controllers/homeController'
 import userController from '../controllers/userController'
 import doctorController from '../controllers/doctorController'
+import patientController from '../controllers/patientController'
 // post dùng để ghi dữ liệu vào database
 // get dùng để lấy dữ liệu từ database lên xử lý
 // put để eidt
@@ -38,7 +39,14 @@ let initWebRoutes = (app) => {
     '/api/get-extra-infor-doctor-by-id',
     doctorController.getExtraInforDoctorById,
   )
-
+  router.get(
+    '/api/get-profile-doctor-by-id',
+    doctorController.getProfileDoctorById,
+  )
+  router.post(
+    '/api/patient-book-appointment',
+    patientController.postBookAppointment,
+  )
   return app.use('/', router)
 }
 module.exports = initWebRoutes
