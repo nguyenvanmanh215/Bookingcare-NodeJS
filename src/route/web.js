@@ -3,6 +3,7 @@ import homeController from '../controllers/homeController'
 import userController from '../controllers/userController'
 import doctorController from '../controllers/doctorController'
 import patientController from '../controllers/patientController'
+import specialtyController from '../controllers/specialtyController'
 // post dùng để ghi dữ liệu vào database
 // get dùng để lấy dữ liệu từ database lên xử lý
 // put để eidt
@@ -47,6 +48,11 @@ let initWebRoutes = (app) => {
     '/api/patient-book-appointment',
     patientController.postBookAppointment,
   )
+  router.post(
+    '/api/verify-book-appointment',
+    patientController.postVerifyBookAppointment,
+  )
+  router.post('/api/create-new-specialty', specialtyController.createSpecialty)
   return app.use('/', router)
 }
 module.exports = initWebRoutes
